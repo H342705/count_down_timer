@@ -1,16 +1,16 @@
-import inquirer from 'inquirer';
-import { format, differenceInMilliseconds } from 'date-fns';
-
+import inquirer from "inquirer";
+import { format, differenceInMilliseconds } from "date-fns";
+import chalk from "chalk";
 
 async function getTargetDateFromUser(): Promise<Date> {
   const answers = await inquirer.prompt([
     {
-      type: 'input',
-      name: 'targetDate',
-      message: 'Enter the target date (YYYY-MM-DD):',
+      type: "input",
+      name: "targetDate",
+      message: chalk.greenBright("Enter the target date (YYYY-MM-DD):"),
       validate: (input) => {
         const date = new Date(input);
-        return isNaN(date.getTime()) ? 'Invalid date format' : true;
+        return isNaN(date.getTime()) ? "Invalid date format" : true;
       },
     },
   ]);
